@@ -87,6 +87,7 @@ static inline void set_microros_native_ethernet_udp_transports(byte mac[], IPAdd
    	Ethernet.begin(mac, client_ip);
 	while (Ethernet.linkStatus() == LinkOFF){
 		delay(100);
+	}
 
 	locator.address = agent_ip;
 	locator.port = agent_port;
@@ -110,6 +111,7 @@ static inline void set_microros_native_ethernet_udp_transports(byte mac[], IPAdd
    	Ethernet.begin(mac, client_ip);
 	while (Ethernet.linkStatus() == LinkOFF){
 		delay(100);
+	}
 
 	locator.address = agent_ip;
 	locator.port = agent_port;
