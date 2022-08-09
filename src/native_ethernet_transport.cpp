@@ -6,6 +6,14 @@
 #include <micro_ros_arduino.h>
 #endif
 
+// WS5100 -------------
+#if defined(STM32L4xx) || defined(STM32F3xx)
+#include <Arduino.h>
+#include <Ethernet.h>
+#include <EthernetUdp.h>
+#include <micro_ros_arduino.h>
+#endif
+
 #ifdef ARDUINO_TEENSY41
 #include <NativeEthernet.h>
 #include <micro_ros_arduino.h>
@@ -16,7 +24,8 @@
 #include <micro_ros_arduino.h>
 #endif
 
-#if defined(TARGET_STM32F4) || defined(ARDUINO_TEENSY41) || defined(TARGET_PORTENTA_H7_M7)
+#if defined(ARDUINO_ARCH_STM32) || defined(ARDUINO_TEENSY41) || defined(TARGET_PORTENTA_H7_M7)
+
 extern "C" {
 
 #include <stdbool.h>
