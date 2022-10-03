@@ -53,11 +53,12 @@ static inline void set_microros_transports(){
 #include "IPAddress.h"
 #endif
 
-#if defined(STM32L4xx) || defined(STM32F3xx)
+#if defined(STM32L4xx)
 #include <Arduino.h>
 #include <SPI.h>
 #include <Ethernet.h>
 #include <EthernetUdp.h>
+
 #endif
 // ============================================================================
 
@@ -85,9 +86,7 @@ static inline void set_microros_native_ethernet_udp_transports(byte mac[], IPAdd
 	static struct micro_ros_agent_locator locator;
 
    	Ethernet.begin(mac, client_ip);
-	while (Ethernet.linkStatus() == LinkOFF){
-		delay(100);
-	}
+	delay(1000);
 
 	locator.address = agent_ip;
 	locator.port = agent_port;
@@ -109,9 +108,7 @@ static inline void set_microros_native_ethernet_udp_transports(byte mac[], IPAdd
 		Ethernet.init(spi_cs);
 	#endif
    	Ethernet.begin(mac, client_ip);
-	while (Ethernet.linkStatus() == LinkOFF){
-		delay(100);
-	}
+	delay(1000);
 
 	locator.address = agent_ip;
 	locator.port = agent_port;
@@ -125,6 +122,7 @@ static inline void set_microros_native_ethernet_udp_transports(byte mac[], IPAdd
 		arduino_native_ethernet_udp_transport_read
 	);
 }
+
 
 #endif
 
