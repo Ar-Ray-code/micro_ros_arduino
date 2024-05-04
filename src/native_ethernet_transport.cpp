@@ -4,24 +4,33 @@
 #include <EthernetUdp.h>
 #include <STM32Ethernet.h>
 #include <micro_ros_arduino.h>
+#include <sys/time.h>
+#endif
+
+#if defined(ARDUINO_ARCH_RENESAS)
+#include <Arduino.h>
+#include <EthernetUdp.h>
+#include <micro_ros_arduino.h>
+#include <time.h>
 #endif
 
 #ifdef ARDUINO_TEENSY41
 #include <NativeEthernet.h>
 #include <micro_ros_arduino.h>
+#include <sys/time.h>
 #endif
 #ifdef TARGET_PORTENTA_H7_M7
 #include <Arduino.h>
 #include <EthernetUdp.h>
 #include <micro_ros_arduino.h>
+#include <sys/time.h>
 #endif
 
-#if defined(TARGET_STM32F4) || defined(ARDUINO_TEENSY41) || defined(TARGET_PORTENTA_H7_M7)
+#if defined(TARGET_STM32F4) || defined(ARDUINO_TEENSY41) || defined(TARGET_PORTENTA_H7_M7) || defined(ARDUINO_ARCH_RENESAS)
 extern "C" {
 
 #include <stdbool.h>
 #include <stdio.h>
-#include <sys/time.h>
 
 static EthernetUDP udp_client;
 
