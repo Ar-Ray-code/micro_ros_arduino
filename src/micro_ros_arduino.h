@@ -53,7 +53,7 @@ static inline void set_microros_transports(){
 #include "IPAddress.h"
 #endif
 
-#if defined(STM32L4xx) || defined(ARDUINO_ARCH_RENESAS)
+#if defined(STM32L4xx) || defined(STM32F4xx) || defined(ARDUINO_ARCH_RENESAS)
 #include <Arduino.h>
 #include <SPI.h>
 #include <Ethernet.h>
